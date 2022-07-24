@@ -2,7 +2,7 @@
 const quoteDisplayElement = document.getElementById('quote-display')
 const quoteInputElement = document.getElementById('quoteInput')
 const timerElement = document.getElementById('timer')
-const timeTaken = document.getElementById('time-taken')
+const timeTaken = document.getElementById('time-taken2')
 let totalWords = document.getElementById('total-words')
 let typingSpeed = document.getElementById('typing-speed')
 
@@ -45,6 +45,7 @@ quoteInputElement.addEventListener('input', () => {
     let time_mins = (time_taken / 60).toFixed(2) 
     timeTaken.innerText = time_taken 
     totalWords.innerText = total_words 
+    timer.innerText = time_taken 
     typingSpeed.innerText = (total_words / time_mins).toFixed(2) + " WPM"
     //renderNewQuote()
   }  
@@ -58,6 +59,7 @@ quoteInputElement.addEventListener('input', () => {
 // }
 async function renderRevQuote()
 {
+    timeTaken.innerText = ""
     const quote = "zyxwvutsrqponmlkjihgfedcba"
     quoteDisplayElement.innerText = ''
     quote.split('').forEach(character => {
@@ -84,11 +86,9 @@ async function renderNewQuote()
 
 let startTime 
 function startTimer() {
-    timerElement.innerText = 0;
+    timerElement.innerText = "";
     startTime = new Date() 
-    setInterval(() => {
-        timer.innerText = getTimerTime()
-    }, 1000)
+    
 }
 
 function getTimerTime(){
